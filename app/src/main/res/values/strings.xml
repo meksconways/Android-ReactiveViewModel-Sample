@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Hürriyet Haber</string>
+    <string name="api_error">Bir Hata Oluştu</string>
+</resources>
