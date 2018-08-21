@@ -1,6 +1,7 @@
 package com.mek.hurriyethaber.data;
 
 import com.mek.hurriyethaber.articlenews.model.NewsModel;
+import com.mek.hurriyethaber.detail.model.NewsDetailModel;
 import com.mek.hurriyethaber.util.AppHelper;
 
 import java.util.List;
@@ -27,7 +28,14 @@ public class ApiRequester {
         return apiService.getArticles(AppHelper.KEY)
                 .map(newsModels -> newsModels)
                 .subscribeOn(Schedulers.io());
+
     }
+
+    public Single<NewsDetailModel> getNewsDetail(String news_id){
+        return apiService.getNewsDetail(AppHelper.KEY,news_id)
+                .subscribeOn(Schedulers.io());
+    }
+
 
 }
 

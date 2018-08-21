@@ -20,6 +20,7 @@ class ArticleNewsViewModel {
 
     @Inject
     public ArticleNewsViewModel() {
+
     }
 
 

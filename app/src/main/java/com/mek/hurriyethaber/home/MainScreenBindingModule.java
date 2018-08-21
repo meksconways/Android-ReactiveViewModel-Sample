@@ -1,6 +1,8 @@
 package com.mek.hurriyethaber.home;
 
 import com.bluelinelabs.conductor.Controller;
+import com.mek.hurriyethaber.detail.NewsDetailComponent;
+import com.mek.hurriyethaber.detail.NewsDetailController;
 import com.mek.hurriyethaber.di.ControllerKey;
 import com.mek.hurriyethaber.articlenews.ArticleNewsComponent;
 import com.mek.hurriyethaber.articlenews.ArticleNewsController;
@@ -12,6 +14,7 @@ import dagger.multibindings.IntoMap;
 
 @Module (subcomponents = {
         ArticleNewsComponent.class,
+        NewsDetailComponent.class,
 
 })
 public abstract class MainScreenBindingModule {
@@ -21,6 +24,11 @@ public abstract class MainScreenBindingModule {
     @IntoMap
     @ControllerKey(ArticleNewsController.class)
     abstract AndroidInjector.Factory<? extends Controller> bindsMainNewsControllerInjector(ArticleNewsComponent.Builder builder);
+
+    @Binds
+    @IntoMap
+    @ControllerKey(NewsDetailController.class)
+    abstract AndroidInjector.Factory<? extends Controller> bindsNewsDetailControllerInjector(NewsDetailComponent.Builder builder);
 
 
 

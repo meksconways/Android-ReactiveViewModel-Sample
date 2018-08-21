@@ -8,8 +8,6 @@ import com.mek.hurriyethaber.articlenews.ArticleNewsController;
 public class MainActivity extends BaseActivity {
 
 
-
-
     @Override
     protected int layoutRes() {
         return R.layout.activity_main;
