@@ -1,7 +1,9 @@
 package com.mek.hurriyethaber.articlenews;
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -29,6 +31,9 @@ public class ArticleNewsController extends BaseController {
     RecyclerView recyclerView;
     @BindView(R.id.txt_error)
     TextView txt_error;
+    @BindView(R.id.swipelyt)
+    SwipeRefreshLayout swipeRefreshLayout;
+
 
     @Override
     protected Disposable[] subscriptions() {
@@ -44,6 +49,18 @@ public class ArticleNewsController extends BaseController {
                 viewModel.getNewsRelay()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(((ArticleNewsAdapter)recyclerView.getAdapter())::setData),
+
+                viewModel.getRefreshRelay()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(refresh -> {
+
+                    Log.d( "subscriptions: ", String.valueOf(refresh));
+
+                    if (!refresh){
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+
+                }),
 
                 viewModel.getErrorRelay()
                 .observeOn(AndroidSchedulers.mainThread())
@@ -69,12 +86,17 @@ public class ArticleNewsController extends BaseController {
     protected void onViewBound(View view) {
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(new ArticleNewsAdapter(presenter));
+
+        swipeRefreshLayout.setOnRefreshListener(() -> presenter.refreshPage());
+
+
     }
 
     @Override
     protected int layoutRes() {
         return R.layout.layout_articles;
     }
+
 
 
 }

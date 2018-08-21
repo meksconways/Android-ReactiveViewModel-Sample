@@ -14,6 +14,7 @@ import javax.inject.Inject;
 
 import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
+import io.reactivex.internal.operators.observable.ObservableError;
 
 @ScreenScope
 class ArticleNewsViewModel {
@@ -27,8 +28,16 @@ class ArticleNewsViewModel {
     private final BehaviorRelay<List<NewsModel>> newsRelay = BehaviorRelay.create();
     private final BehaviorRelay<Integer> errorRelay = BehaviorRelay.create();
     private final BehaviorRelay<Boolean> loadingRelay = BehaviorRelay.create();
+    private final BehaviorRelay<Boolean> refreshRelay = BehaviorRelay.create();
 
 
+    public Observable<Boolean> getRefreshRelay(){
+        return refreshRelay;
+    }
+
+    public Consumer<Boolean> refreshUpdated(){
+        return refreshRelay;
+    }
 
 
     public Observable<Boolean> getLoadingRelay() {
@@ -46,6 +55,7 @@ class ArticleNewsViewModel {
     public Consumer<Boolean> loadingUpdated(){
 
         return loadingRelay;
+
     }
 
     public Consumer<Throwable> onError(){
