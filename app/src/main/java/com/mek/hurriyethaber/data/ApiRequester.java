@@ -33,7 +33,6 @@ public class ApiRequester {
     }
 
     public Single<NewsDetailModel> getNewsDetail(String news_id){
-        Log.d( "getNewsDetail: ",news_id);
         return apiService.getNewsDetail(AppHelper.KEY,Integer.parseInt(news_id))
                 .subscribeOn(Schedulers.io());
     }

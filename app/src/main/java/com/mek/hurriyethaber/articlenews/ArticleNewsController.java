@@ -54,10 +54,10 @@ public class ArticleNewsController extends BaseController {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(refresh -> {
 
-                    Log.d( "subscriptions: ", String.valueOf(refresh));
 
                     if (!refresh){
                         swipeRefreshLayout.setRefreshing(false);
+                        recyclerView.scrollToPosition(0);
                     }
 
                 }),

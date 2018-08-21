@@ -32,6 +32,7 @@ class ArticleNewsPresenter implements ArticleNewsAdapter.ArticleClickListener {
     }
 
     private void loadArticleNews() {
+
         requester.getArticles()
                 .doOnSubscribe(__ -> viewModel.loadingUpdated().accept(true))
                 .doOnEvent((d,t) -> viewModel.loadingUpdated().accept(false))
