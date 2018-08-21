@@ -19,7 +19,7 @@ import io.reactivex.functions.Consumer;
 class ArticleNewsViewModel {
 
     @Inject
-    public ArticleNewsViewModel() {
+    ArticleNewsViewModel() {
 
     }
 

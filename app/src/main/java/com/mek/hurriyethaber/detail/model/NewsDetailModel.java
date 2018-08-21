@@ -5,14 +5,16 @@ import java.util.List;
 import com.google.auto.value.AutoValue;
 import com.mek.hurriyethaber.articlenews.model.File;
 import com.squareup.moshi.Json;
+import com.squareup.moshi.JsonAdapter;
+import com.squareup.moshi.Moshi;
 
 @AutoValue
 public abstract class NewsDetailModel {
 
     @Json(name = "Id")
-    abstract String id();
+    public abstract String id();
     @Json(name = "ContentType")
-    abstract String contentType();
+    public abstract String contentType();
     @Json(name = "CreatedDate")
     abstract String createdDate();
     @Json(name = "Description")
@@ -20,7 +22,7 @@ public abstract class NewsDetailModel {
     @Json(name = "Editor")
     abstract String editor();
     @Json(name = "Files")
-    abstract List<File> files();
+    public abstract List<File> files();
     @Json(name = "ModifiedDate")
     abstract String modifiedDate();
     @Json(name = "Path")
@@ -32,12 +34,17 @@ public abstract class NewsDetailModel {
     @Json(name = "Tags")
     abstract List<String> tags();
     @Json(name = "Text")
-    abstract String text();
+    public abstract String text();
     @Json(name = "Title")
-    abstract String title();
+    public abstract String title();
     @Json(name = "Url")
-    abstract String url();
+    public abstract String url();
     @Json(name = "Writers")
     abstract List<Object> writers();
+
+
+    public static JsonAdapter<NewsDetailModel> jsonAdapter(Moshi moshi){
+        return new AutoValue_NewsDetailModel.MoshiJsonAdapter(moshi);
+    }
 
 }

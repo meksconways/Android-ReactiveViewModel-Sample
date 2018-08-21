@@ -7,6 +7,8 @@ public interface ScreenNavigator {
 
     void initWithRouter(Router router, Controller rootController);
 
+    void push(String id);
+
     boolean pop();
 
     void clear();

@@ -21,7 +21,7 @@ public interface ApiService {
 
     @GET("/v1/articles/{id}")
     Single<NewsDetailModel> getNewsDetail(@Header("apikey") String apikey,
-                                          @Path("id") String id);
+                                          @Path("id") int id);
 
 
 

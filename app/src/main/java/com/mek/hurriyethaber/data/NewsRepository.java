@@ -12,12 +12,17 @@ import javax.inject.Singleton;
 
 import io.reactivex.Maybe;
 import io.reactivex.Single;
+import io.reactivex.schedulers.Schedulers;
 
 @Singleton
 public class NewsRepository {
 
     private final Provider<ApiRequester> apiRequesterProvider;
     private final List<NewsModel> cachedNews = new ArrayList<>();
+    private final List<NewsDetailModel> cachedDetailNews = new ArrayList<>();
+
+
+    // henüz kullanmadım, cacheleme işlemleri henüz yok
 
     @Inject
     public NewsRepository(Provider<ApiRequester> apiRequesterProvider) {
@@ -27,26 +32,36 @@ public class NewsRepository {
     public Single<List<NewsModel>> getArticleNews(){
 
         return Maybe.concat(cachedArticleNews(),apiArticleNews())
-                .firstOrError();
+                .firstOrError()
+                .subscribeOn(Schedulers.io());
 
 
     }
 
+    public Single<NewsDetailModel> getNewsDetail(String id) {
+        return Maybe.concat(cachedNews(id), apiNewsDetail(id))
+                .firstOrError();
+    }
+
+
 //    public Single<NewsModel> getNews(String id){
 //
+//        return Maybe.concat(cachedNews(id),apiNewsDetail(id))
+//                .firstOrError();
 //    }
 
 
     private Maybe<NewsDetailModel> apiNewsDetail(String id){
         return apiRequesterProvider.get().getNewsDetail(id)
                 .toMaybe();
+
     }
 
-    public Maybe<NewsModel> cachedNews(String id){
+    public Maybe<NewsDetailModel> cachedNews(String id){
 
         return Maybe.create(e -> {
 
-            for (NewsModel cachedModel : cachedNews) {
+            for (NewsDetailModel cachedModel : cachedDetailNews) {
                 if (cachedModel.id().equals(id)){
                     e.onSuccess(cachedModel);
                     break;
