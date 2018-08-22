@@ -11,6 +11,9 @@ import android.view.ViewGroup;
 
 import com.bluelinelabs.conductor.Controller;
 import com.mek.hurriyethaber.di.Injector;
+import com.mek.hurriyethaber.ui.TabScreenNav;
+
+import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -24,6 +27,9 @@ public abstract class BaseController extends Controller {
 
     private boolean injected = false;
     private Unbinder unbinder;
+
+    @Inject
+    TabScreenNav tabScreenNav;
 
     public BaseController(Bundle args) {
         super(args);

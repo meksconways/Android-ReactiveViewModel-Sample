@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#eb1c23</color>
+    <color name="colorPrimaryDark">#b00000</color>
+    <color name="colorAccent">#eb1c23</color>
+
+    <color name="white">#ffffff</color>
+    <color name="mek_beyaz">#F1f1f1</color>
+    <color name="smoke">#c5c5c5</color>
+
+    <color name="colorIsim">#3f3f3f</color>
+    <color name="colorikon">#626262</color>
+    <color name="color_text">#212121</color>
+
+    <color name="transparent_white">#90000000</color>
+    <color name="transparent_pri">#603897f0</color>
+    <color name="transparent_black">#40ffffff</color>
+    <color name="traMor">#608A2F8A</color>
+    <color name="traSari">#80FFE900</color>
+
+    <color name="cnMor">#8A2F8A</color>
+    <color name="cnSari">#FFE900</color>
+    <color name="cnPembe">#EE0080</color>
+    <color name="cnMavi">#009CDF</color>
+    <color name="bandroidGreen">#109D58</color>
+
+    <color name="refresh_progress_1">@color/colorPrimary</color>
+    <color name="refresh_progress_2">@color/colorAccent</color>
+    <color name="refresh_progress_3">@color/colorPrimary</color>
+
 </resources>

@@ -13,5 +13,9 @@ public interface ScreenNavigator {
 
     void clear();
 
+    void clearStateFromChildRouter(Router router);
+
+
+
 
 }

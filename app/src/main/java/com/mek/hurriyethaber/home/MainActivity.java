@@ -4,6 +4,7 @@ import com.bluelinelabs.conductor.Controller;
 import com.mek.hurriyethaber.R;
 import com.mek.hurriyethaber.base.BaseActivity;
 import com.mek.hurriyethaber.articlenews.ArticleNewsController;
+import com.mek.hurriyethaber.homecontroller.HomeController;
 
 public class MainActivity extends BaseActivity {
 
@@ -15,6 +16,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected Controller initialScreen() {
-        return new ArticleNewsController();
+        // todo
+        return new HomeController();
     }
 }

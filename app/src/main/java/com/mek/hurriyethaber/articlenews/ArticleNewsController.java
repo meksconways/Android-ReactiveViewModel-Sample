@@ -86,9 +86,7 @@ public class ArticleNewsController extends BaseController {
     protected void onViewBound(View view) {
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setAdapter(new ArticleNewsAdapter(presenter));
-
         swipeRefreshLayout.setOnRefreshListener(() -> presenter.refreshPage());
-
 
     }
 

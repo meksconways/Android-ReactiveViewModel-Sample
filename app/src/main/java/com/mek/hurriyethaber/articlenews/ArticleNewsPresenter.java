@@ -8,6 +8,7 @@ import com.mek.hurriyethaber.data.ApiRequester;
 import com.mek.hurriyethaber.data.NewsRepository;
 import com.mek.hurriyethaber.di.ScreenScope;
 import com.mek.hurriyethaber.ui.ScreenNavigator;
+import com.mek.hurriyethaber.ui.TabScreenNav;
 
 import javax.inject.Inject;
 
@@ -19,12 +20,15 @@ class ArticleNewsPresenter implements ArticleNewsAdapter.ArticleClickListener {
     private final ApiRequester requester;
     private final NewsRepository repository;
     private final ScreenNavigator screenNavigator;
+    private final TabScreenNav tabScreenNav;
 
     @Inject
     ArticleNewsPresenter(ArticleNewsViewModel viewModel, ApiRequester requester,
-                         NewsRepository repository, ScreenNavigator screenNavigator) {
+                         NewsRepository repository, ScreenNavigator screenNavigator,
+                         TabScreenNav tabScreenNav) {
 
         this.viewModel = viewModel;
+        this.tabScreenNav = tabScreenNav;
         this.requester = requester;
         this.repository = repository;
         this.screenNavigator = screenNavigator;
@@ -57,13 +61,8 @@ class ArticleNewsPresenter implements ArticleNewsAdapter.ArticleClickListener {
 
     @Override
     public void onClick(NewsModel model) {
-        try {
 
-            Log.d( "onClick: ",model.id());
-
-        }catch (Exception e){
-
-        }
-        screenNavigator.push(model.id());
+        //screenNavigator.push(model.id()); todo
+        tabScreenNav.push(model.id());
     }
 }

@@ -3,6 +3,7 @@ package com.mek.hurriyethaber.home;
 import com.mek.hurriyethaber.di.ActivityScope;
 import com.mek.hurriyethaber.networking.ServiceModule;
 import com.mek.hurriyethaber.ui.NavigationModule;
+import com.mek.hurriyethaber.ui.TabNavigationModule;
 
 import dagger.Subcomponent;
 import dagger.android.AndroidInjector;
@@ -11,6 +12,7 @@ import dagger.android.AndroidInjector;
 @Subcomponent(modules = {
         MainScreenBindingModule.class,
         NavigationModule.class,
+        TabNavigationModule.class
 })
 public interface MainActivityComponent extends AndroidInjector<MainActivity>{
 

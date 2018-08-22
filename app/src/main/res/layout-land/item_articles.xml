@@ -54,6 +54,7 @@
                 android:id="@+id/txt_title"
                 android:textSize="18sp"
                 android:textStyle="bold"
+                android:textColor="@color/color_text"
                 android:layout_margin="16dp"
                 />
 

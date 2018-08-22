@@ -3,12 +3,7 @@ package com.mek.hurriyethaber.ui;
 import com.bluelinelabs.conductor.Controller;
 import com.bluelinelabs.conductor.Router;
 import com.bluelinelabs.conductor.RouterTransaction;
-import com.bluelinelabs.conductor.changehandler.AutoTransitionChangeHandler;
 import com.bluelinelabs.conductor.changehandler.FadeChangeHandler;
-import com.bluelinelabs.conductor.changehandler.HorizontalChangeHandler;
-import com.bluelinelabs.conductor.changehandler.TransitionChangeHandlerCompat;
-import com.bluelinelabs.conductor.changehandler.VerticalChangeHandler;
-import com.bluelinelabs.conductor.internal.NoOpControllerChangeHandler;
 import com.mek.hurriyethaber.detail.NewsDetailController;
 import com.mek.hurriyethaber.di.ActivityScope;
 
@@ -41,6 +36,8 @@ public class DefaultScreenNavigator implements ScreenNavigator {
         }
     }
 
+
+
     @Override
     public boolean pop() {
         return router != null && router.handleBack();
@@ -49,5 +46,15 @@ public class DefaultScreenNavigator implements ScreenNavigator {
     @Override
     public void clear() {
         router = null;
+    }
+
+
+
+    @Override
+    public void clearStateFromChildRouter(Router childRouter) {
+            childRouter.setPopsLastView(true); /* Ensure the last view can be removed while we do this */
+            childRouter.popToRoot();
+            childRouter.popCurrentController();
+            childRouter.setPopsLastView(false);
     }
 }
